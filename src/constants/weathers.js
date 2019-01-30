@@ -1,9 +1,11 @@
 export default {
     CLOUD : "cloud",
-    CLOUDY : "cloudy",
-    SUN : "sun",
-    RAIN : "rain",
-    SNOW : "snow",
-    WINDY : "windy",
+    CLOUDY : "day-cloudy",
+    SUN : "day-sunny",
+    RAIN : "day-rain-mix",
+    SNOW : "day-show",
+    WINDY : "day-windy",
+    THUNDER : "day-thunderstore",
+    DRIZZLE : "day-showers "
 }
 

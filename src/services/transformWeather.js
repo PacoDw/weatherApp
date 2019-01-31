@@ -2,7 +2,7 @@ import convert from 'convert-units'
 import constant from '../constants/weathers'
 
 
-const getTemp = kelvin => parseFloat(convert(kelvin).from('K').to('C').toFixed(2));
+const getTemp = kelvin => parseFloat(convert(kelvin).from('K').to('C').toFixed(0));
 
 const getWeatherState = ( { id } ) => {
   let weatherIcon = '';

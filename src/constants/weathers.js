@@ -5,7 +5,7 @@ export default {
     RAIN : "day-rain-mix",
     SNOW : "day-show",
     WINDY : "day-windy",
-    THUNDER : "day-thunderstore",
+    THUNDER : "day-thunderstorm",
     DRIZZLE : "day-showers "
 }
 

@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 
 import { Grid, Col, Row } from 'react-flexbox-grid';
 import LocationList from './components/LocationList'
+import ForecastExtended  from './components/ForecastExtended'
 import './App.css';
 
 const cities = [
@@ -20,6 +21,11 @@ const cities = [
 ]
 
 class App extends Component {
+
+  handleSelectedLocation = city => {
+    console.log('handleSelectedLocation ', city);
+  }
+
   render() {
     return (
       <Grid>
@@ -32,11 +38,16 @@ class App extends Component {
         </AppBar>
         <Row>
           <Col xs={12} md={6}>
-            <LocationList cities={cities} />
+            <LocationList 
+              cities={cities}
+              onSelectedLocation={this.handleSelectedLocation}
+            />
           </Col>
           <Col xs={12} md={6}>
-            <Paper elevation='4'>
-              <div className="details"></div>
+            <Paper zDepth='4'>
+              <div className="details">
+                <ForecastExtended />
+              </div>
             </Paper>
           </Col>
         </Row>

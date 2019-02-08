@@ -23,7 +23,7 @@ class WeatherLocation extends Component {
 	
 	
 	handleUpdateClick = () => {
-		const api_weather = getUrlWeatherByCity(this.state.city);
+		const api_weather = getUrlWeatherByCity('weather', this.state.city);
 		fetch(api_weather)
 			.then(res => res.json())
 			.then( data => {

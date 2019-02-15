@@ -19,12 +19,13 @@ class ForecastExtended extends React.Component {
     this.updateCity(this.props.city)
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.city !== this.props.city)
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.city !== this.props.city) {
       this.setState({forecastData:null})   // This allow us to show the loading state
-      this.updateCity(nextProps.city)  // When the promise is resolve, it show us the data
+      this.updateCity(this.props.city)      // When the promise is resolve, it show us the data
+    }
   }
-  
+
   updateCity = city => {
     const url_forecast = getUrlWeatherByCity('forecast', city);
     fetch(url_forecast)
@@ -67,3 +68,36 @@ ForecastExtended.propTypes = {
 }
 
 export default ForecastExtended
+
+
+  // This method is unsafe
+  // componentWillReceiveProps = (nextProps) => {
+  //   if (nextProps.city !== this.props.city)
+  //     this.setState({forecastData:null})   
+  //     this.updateCity(nextProps.city) 
+  // }
+
+// Examples to replace the above concept
+// In this two exapmples you need to have a componentDidUpdate tu use them together
+
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('shouldComponentUpdate')
+  //   console.log(nextProps.city, ' === ', this.state.city, )
+  //   console.log('-------------------------------------')
+  //   if (nextProps.city !== this.state.city)
+  //     return true
+  //   return false
+  //   // return true
+  // }
+
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   console.log('getDerivedStateFromProps')
+  //   console.log(nextProps.city, ' === ', prevState.city, )
+  // console.log('-------------------------------------')
+
+  //   if (nextProps.city !== prevState.city ) {
+  //     return {city: nextProps.city}
+  //   }
+  //   else return null
+  // }

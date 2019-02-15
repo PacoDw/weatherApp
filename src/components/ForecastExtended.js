@@ -25,6 +25,7 @@ class ForecastExtended extends React.Component {
   renderForecastItemDays() {
     return this.state.forecastData.map(forecast => (
       <ForecastItem
+        key={`${forecast.weekDay}${forecast.hour}`}
         weekDay={forecast.weekDay}
         hour={forecast.hour}
         data={forecast.data}

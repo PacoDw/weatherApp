@@ -31,6 +31,12 @@
   }
 }
 
+@media (max-width: 48em) {
+  .details {
+    max-height: 40vh;
+  }
+}
+
 .details {
   background-color: #999999;
   height: 85vh;

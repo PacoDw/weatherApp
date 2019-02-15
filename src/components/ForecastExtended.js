@@ -16,10 +16,20 @@ class ForecastExtended extends React.Component {
   }
 
   componentDidMount() {
-    const url_forecast = getUrlWeatherByCity('forecast', this.props.city);
+    this.updateCity(this.props.city)
+  }
+
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.city !== this.props.city)
+      this.setState({forecastData:null})   // This allow us to show the loading state
+      this.updateCity(nextProps.city)  // When the promise is resolve, it show us the data
+  }
+  
+  updateCity = city => {
+    const url_forecast = getUrlWeatherByCity('forecast', city);
     fetch(url_forecast)
       .then(res => res.json())
-      .then(data => this.setState({ forecastData: transformForecast(data) }))
+      .then(data => this.setState({ forecastData: transformForecast(data) }) )
   }
 
   renderForecastItemDays() {

@@ -12,7 +12,7 @@ class ForecastExtended extends React.Component {
     super()
     this.state = {
       forecastData: null,
-    }
+    } 
   }
 
   componentDidMount() {
@@ -20,7 +20,7 @@ class ForecastExtended extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.city !== this.props.city) {
+    if (prevProps.city !== this.props.city) {
       this.setState({forecastData:null})   // This allow us to show the loading state
       this.updateCity(this.props.city)      // When the promise is resolve, it show us the data
     }

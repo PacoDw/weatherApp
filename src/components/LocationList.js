@@ -10,15 +10,16 @@ const LocationList = ({ cities, onSelectedLocation }) => {
     console.log("handleWeatherLocationClick: ", city)
     onSelectedLocation(city)
   }
-  const srtToComponents = cities => (
-    cities.map(city => (
+  const srtToComponents = cities => {
+    return cities.map(city => (
       <WeatherLocation
-        key={city}
-        city={city}
-        onWeatherLocationClick={_ => handleWeatherLocationClick(city)}
+        key={city.key}
+        city={city.name}
+        data={city.data}
+        onWeatherLocationClick={_ => handleWeatherLocationClick(city.name)}
       />)
     )
-  )
+  }
 
   return (
     <div className="locationList">
@@ -33,4 +34,3 @@ LocationList.propTypes = {
 }
 
 export default LocationList
-

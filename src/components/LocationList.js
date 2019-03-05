@@ -7,7 +7,6 @@ import './style.css';
 
 const LocationList = ({ cities, onSelectedLocation }) => {
   const handleWeatherLocationClick = city => {
-    console.log("handleWeatherLocationClick: ", city)
     onSelectedLocation(city)
   }
   const srtToComponents = cities => {

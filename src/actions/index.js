@@ -16,9 +16,20 @@ const setWeatherCity = payload => ( { type: SET_WEATHER_CITY, payload } )
 const clearWeatherCity = payload => ( { type: CLEAR_WEATHER_CITY, payload } )
 
 export const setSelectedCity = payload => {
-  return dispatch => {
-    const url_forecast = getUrlWeatherByCity('forecast', payload);
+  return (dispatch, getCurrentState ) => {
     dispatch(setCity(payload))
+
+    /** We compared both dates, current date and state date, if the dates are different 
+     * to more than one minute, we will let the application make a request to the server 
+     * to get new data
+     */
+    const state = getCurrentState()
+    const date =  state.cities[payload] && state.cities[payload].forecastDataDate
+    const now = new Date()
+    if (date && (now - date) < 1 * 60 * 1000)
+      return;
+    
+    const url_forecast = getUrlWeatherByCity('forecast', payload);
     fetch(url_forecast)
       .then(res => res.json())
       .then(data => dispatch(setForcastData({ city: payload, forecastData: transformForecast(data) })) )

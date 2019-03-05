@@ -6,7 +6,10 @@ export const cities = (state = {}, action) => {
   switch (action.type) {
     case SET_FORECASTDATA: {
       const { city, forecastData } = action.payload
-      return { ...state, [city]: { ...state[city], forecastData } }
+      /* With forecastDataDate we can to check at what time the application sent a 
+      * request to the api to get the data
+      */
+      return { ...state, [city]: { ...state[city], forecastData, forecastDataDate: new Date() } }
     }
     case CLEAR_WEATHER_CITY: {
       const city = action.payload

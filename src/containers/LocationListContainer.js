@@ -18,7 +18,6 @@ class LocationListContainer extends Component {
   }
   
   render() {
-    console.log('this.props.weatherCities', this.props.weatherCities)
     return (
       <LocationList
         cities={this.props.weatherCities}
